@@ -17,5 +17,6 @@
         "psr-0": {
             "Millwright\\BoilerplateBundle": ""
         }
-    }
+    },
+    "target-dir": "Millwright/BoilerplateBundle"
 }
