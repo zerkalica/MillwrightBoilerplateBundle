@@ -1,0 +1,21 @@
+{
+    "name": "zerkalica/millwrightboilerplatebundle",
+    "type": "symfony-bridge",
+    "description": "Symfony2 Millwright boilerplate bundle",
+    "keywords": ["menu"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Stefan Zerkalica",
+            "email": "zerkalica@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/framework-bundle": ">=2.0,<2.2-dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Millwright\\BoilerplateBundle": ""
+        }
+    }
+}
