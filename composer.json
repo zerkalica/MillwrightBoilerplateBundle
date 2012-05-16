@@ -1,8 +1,8 @@
 {
-    "name": "zerkalica/millwrightboilerplatebundle",
+    "name": "zerkalica/millwright-boilerplate-bundle",
     "type": "symfony-bridge",
     "description": "Symfony2 Millwright boilerplate bundle",
-    "keywords": ["menu"],
+    "keywords": ["view"],
     "license": "MIT",
     "authors": [
         {
