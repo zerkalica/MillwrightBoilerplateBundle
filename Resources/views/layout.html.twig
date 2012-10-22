@@ -35,38 +35,42 @@
 {% block stylesheets %}
 {% endblock stylesheets %}
 
-<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
-
-<!-- All JavaScript at the bottom, except this Modernizr build incl. Respond.js
-       Respond is a polyfill for min/max-width media queries. Modernizr enables HTML5 elements & feature detects;
-       for optimal performance, create your own custom Modernizr build: www.modernizr.com/download/ -->
-<script src="{{ asset('bundles/millwrightboilerplate/js/modernizr-2.5.3.min.js') }}"></script>
+{% block javascripts_header %}
+    {% include 'MillwrightBoilerplateBundle::js.html.twig' with {'js': 'bundles/millwrightboilerplate/js/modernizr-2.6.2.min.js'} %}
+{% block javascripts_header %}
 </head>
 
 <body>
     {% block body %}
     {% endblock body %}
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ asset('bundles/millwrightboilerplate/js/jquery-1.7.2.min.js') }}"><\/script>')</script>
+    {% block javascripts_pre %}
+        {% include 'MillwrightBoilerplateBundle::google_js.html.twig' with {'url': 'jquery/1.8.2/jquery.min.js', path: 'bundles/millwrightboilerplate/js/jquery-1.8.2.min.js'} %}
+        {% include 'MillwrightBoilerplateBundle::google_js.html.twig' with {'url': 'jqueryui/1.9.0/jquery-ui.min.js', path: 'bundles/millwrightboilerplate/js/jquery-ui-1.9.0.custom.min.js'} %}
+    {% endblock javascripts_pre %}
 
     <!-- scripts concatenated and minified via build script -->
     {% block javascripts %}
     {% endblock javascripts %}
     <!-- end scripts -->
 
-    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-       http://chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    {% block document_ready %}
+    {% endblock document_ready %}
+
+    {% block javascripts_post %}
     <!--[if lt IE 7 ]>
-    <script defer src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  <![endif]-->
+    {% block javascripts_ie6 %}
+        <script defer src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+    {% endblock javascripts_ie6 %}
+    <![endif]-->
 
     <script defer>
         $(document).ready(function() {
             {{ block('document_ready') }}
         });
     </script>
+    {% endblock javascripts_post %}
 
 </body>
 </html>
