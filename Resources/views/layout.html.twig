@@ -62,13 +62,12 @@
     <![endif]-->
 
     <script defer>
-        $.fn.attachPlugins = function($this) {
+        $.fn.attachPlugins = function() {
             {{ block('document_ready') }}
         }
 
         $(document).ready(function() {
-            $this = $('body');
-            $this.attachPlugins();
+            $('body').attachPlugins();
         });
     </script>
     {% endblock javascripts_post %}
