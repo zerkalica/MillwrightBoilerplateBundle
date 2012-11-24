@@ -7,7 +7,7 @@ Inspired by OryzoneBoilerplateBundle(https://github.com/Oryzone/OryzoneBoilerpla
 
 ### Features
 
-* Simple layout html5.html.twig (no hader/footer markup, only body)
+* Simple layout html5.html.twig (no header/footer markup)
 * No js and css included
 * Twig config variables compatible with OryzoneBoilerplateBundle(https://github.com/Oryzone/OryzoneBoilerplateBundle/blob/master/Resources/doc/index.md#available-variables)
 * Some reusable code moved to helpers.html.twig
