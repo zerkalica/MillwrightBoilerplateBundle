@@ -13,6 +13,10 @@
     "require": {
         "symfony/framework-bundle": ">=2.0"
     },
+     "suggest": {
+        "manymules/jquery-bundle": "*",
+        "manymules/modernizr-bundle": "*"
+    },
     "autoload": {
         "psr-0": {
             "Millwright\\BoilerplateBundle": ""

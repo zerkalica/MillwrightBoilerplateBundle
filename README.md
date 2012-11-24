@@ -8,9 +8,11 @@ Inspired by OryzoneBoilerplateBundle(https://github.com/Oryzone/OryzoneBoilerpla
 Features
 --------
 
-* Simple layout html5.html.twig (no hader/footer markup, only body, js, css parts)
+* Simple layout html5.html.twig (no hader/footer markup, only body)
+* No js and css included
 * Twig config variables compatible with OryzoneBoilerplateBundle(https://github.com/Oryzone/OryzoneBoilerplateBundle/blob/master/Resources/doc/index.md#available-variables)
 * Some reusable code moved to helpers.html.twig
+* Optionaly use ManyMulesModernizrBundle(https://github.com/ManyMules/ManyMulesModernizrBundle) and ManyMulesJQueryBundle(https://github.com/ManyMules/ManyMulesJQueryBundle)
 
 Example
 -------
@@ -23,16 +25,16 @@ Example
 
 {% block body_js %}
     {{ add.chromeFrame() }}
-    {{ add.googleJs('jquery/1.8.2/jquery.min.js', 'bundles/millwrightboilerplate/js/jquery-1.8.2.min.js') }}
+    {{ add.googleJs('jquery/1.8.3/jquery.min.js', 'bundles/manymulesjquery/js/jquery.min.js') }}
     {{ add.googleAnalytics(bp_analytics_id|default('')) }}
 {% endblock body_js %}
 
 {% block head_js %}
-    {{ add.js('bundles/millwrightboilerplate/js/modernizr-2.6.2.min.js' }}
+    {{ add.js('bundles/manymulesmodernizr/js/modernizr.min.js' }}
 {% endblock head_js %}
 
 {% block favicon %}
-    {{ add.favicon('bundles/millwrightboilerplate/favicon.ico') }}
+    {{ add.favicon('favicon.ico') }}
 {% endblock favicon %}
 
 {% block final_css %}
