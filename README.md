@@ -5,8 +5,7 @@ Base html layout and content twig helpers
 
 Inspired by OryzoneBoilerplateBundle(https://github.com/Oryzone/OryzoneBoilerplateBundle)
 
-Features
---------
+### Features
 
 * Simple layout html5.html.twig (no hader/footer markup, only body)
 * No js and css included
@@ -14,8 +13,34 @@ Features
 * Some reusable code moved to helpers.html.twig
 * Optionaly use ManyMulesModernizrBundle(https://github.com/ManyMules/ManyMulesModernizrBundle) and ManyMulesJQueryBundle(https://github.com/ManyMules/ManyMulesJQueryBundle)
 
-Example
--------
+### Installation
+
+``` bash
+php composer.phar update zerkalica/millwright-boilerplate-bundle
+php composer.phar update manymules/jquery-bundle
+php composer.phar update manymules/modernizr-bundle
+```
+
+### Add bundle to your application kernel
+
+``` php
+// app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new ManyMules\JQueryBundle\ManyMulesJQueryBundle,
+        new ManyMules\ModernizrBundle\ManyMulesModernizrBundle,
+
+        new Millwright\BoilerplateBundle\MillwrightBoilerplateBundle,
+        // ...
+    );
+}
+```
+
+### Example
+
 
 ```jinjia
 {# ::layout.html.twig #}
