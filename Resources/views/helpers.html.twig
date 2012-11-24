@@ -1,0 +1,87 @@
+{% macro js(path) %}
+    <script defer src="{{ asset(path) }}" type="text/javascript"></script>
+{% endmacro %}
+
+{% macro urlJs(url, path) %}
+    <script src="{{ url }}"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset(path) }}"><\/script>')</script>
+{% endmacro %}
+
+{% macro googleJs(url, path) %}
+    {{ _self.urlJs('//ajax.googleapis.com/ajax/libs/' ~ url, path)|raw }}
+{% endmacro %}
+
+{% macro coffee(path) %}
+    <script defer src="{{ asset(path) }}" type="text/coffeescript"></script>
+{% endmacro %}
+
+{% macro css(path, media) %}
+    <link rel="stylesheet" type="text/css" media="{{ media | default('all') }}" href="{{ asset(path) }}" />
+{% endmacro %}
+
+{% macro less(path) %}
+    <link rel="stylesheet/less" href="{{ asset(path) }}">
+{% endmacro %}
+
+{% macro favicon(path) %}
+    <link rel="shortcut icon" href="{{ asset(path) }}" />
+{% endmacro %}
+
+{% macro googleAnalytics(site_ga_id) %}
+    {% if site_ga_id is not empty %}
+        <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+             mathiasbynens.be/notes/async-analytics-snippet -->
+        <script>
+            var _gaq=[['_setAccount','{{ site_ga_id }}'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+                g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    {% endif %}
+{% endmacro %}
+
+{% macro chromeFrame() %}
+    <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+{% endmacro %}
+
+{% macro readyStart() %}
+        $(document).ready(function() {
+{% endmacro %}
+
+{% macro readyFinish() %}
+        });
+{% endmacro %}
+
+{#
+    Core twig macroses library
+    Blocks, model view, forms, dialog, table, link, datetime
+#}
+
+{#
+    Basic blocks
+#}
+
+{#
+    Convert attribute array to string
+
+    @param {} attributes
+    @example
+         <div{{ _self.attributes({'class': 'test', 'id': 'block-1'}) }}>
+
+#}
+{% macro attributes(attributes) %}
+    {% for name, value in attributes %}
+        {%- if value is not none and value is not sameas(false) -%}
+            {{- ' %s="%s"'|format(name, value is sameas(true) ? name|e : value|e)|raw -}}
+        {%- endif -%}
+    {%- endfor -%}
+{% endmacro attributes %}
+
+{#
+    Clean up class attribute
+
+    @param string attr
+#}
+{% macro attr_clean(attr) %}
+    {{- attr|replace({'.': '_'})|lower -}}
+{% endmacro attr_clean %}

@@ -1,0 +1,16 @@
+{% block body_js %}
+    {% import 'MillwrightBoilerplateBundle::helpers.html.twig' as add %}
+    {{ add.chromeFrame() }}
+    {{ add.googleJs('jquery/1.8.2/jquery.min.js', 'bundles/millwrightboilerplate/js/jquery-1.8.2.min.js') }}
+    {{ add.googleAnalytics(bp_analytics_id|default('')) }}
+{% endblock body_js %}
+
+{% block head_js %}
+    {% import 'MillwrightBoilerplateBundle::helpers.html.twig' as add %}
+    {{ add.js('bundles/millwrightboilerplate/js/modernizr-2.6.2.min.js') }}
+{% endblock head_js %}
+
+{% block favicon %}
+    {% import 'MillwrightBoilerplateBundle::helpers.html.twig' as add %}
+    {{ add.favicon('bundles/millwrightboilerplate/favicon.ico') }}
+{% endblock favicon %}
